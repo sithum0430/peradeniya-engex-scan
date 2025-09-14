@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* University of Peradeniya QR Scanner Design System
+   Colors inspired by university logo - deep red/maroon with gold accents
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 20% 95%;
+    --foreground: 0 0% 5%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
+
+    --primary: 0 75% 30%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 45 100% 50%;
+    --secondary-foreground: 0 0% 5%;
+
+    --muted: 220 20% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 45 100% 60%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 85%;
+    --input: 220 20% 95%;
+    --ring: 0 75% 30%;
+
+    /* University themed colors */
+    --university-red: 0 75% 30%;
+    --university-gold: 45 100% 50%;
+    --university-gold-light: 45 100% 60%;
+    --university-red-light: 0 75% 40%;
+
+    /* Glass morphism effects */
+    --glass-bg: 0 0% 100% / 0.15;
+    --glass-border: 0 0% 100% / 0.2;
+    --glass-shadow: 0 0% 0% / 0.1;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--university-red)), hsl(var(--university-red-light)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--university-gold)), hsl(var(--university-gold-light)));
+    --gradient-bg: linear-gradient(135deg, hsl(220 20% 95%), hsl(220 40% 90%));
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 75% 45%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 0 0% 5%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 45 100% 65%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 15%;
+    --ring: 0 75% 45%;
+
+    /* Dark mode glass effects */
+    --glass-bg: 0 0% 0% / 0.2;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-shadow: 0 0% 0% / 0.3;
+
+    --gradient-bg: linear-gradient(135deg, hsl(220 20% 8%), hsl(220 40% 12%));
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glass morphism card */
+  .glass-card {
+    @apply rounded-2xl border;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .glass-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Scanner view container */
+  .scanner-container {
+    @apply relative overflow-hidden rounded-2xl;
+    background: rgba(0, 0, 0, 0.8);
+    aspect-ratio: 1;
+  }
+
+  /* Success animation */
+  .scan-success {
+    animation: scan-pulse 0.6s ease-out;
+  }
+
+  @keyframes scan-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
